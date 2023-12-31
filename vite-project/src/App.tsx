@@ -15,23 +15,15 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <ProtectedRoute><Layout /></ProtectedRoute>,
-    children: [{
-      path: "", element: <Home />,
-
-    },
-    {
-      path: "profile", element: <Profile />
-    },
-    ],
+    children: [
+      { path: "", element: <Home /> },
+      { path: "profile", element: <Profile /> }
+    ]
   },
-  {
-    path: "/login", element: <Login />
-  },
-  {
-    path: "createaccount", element: <CreateAccount />
-  }
-
+  { path: "/login", element: <Login /> },
+  { path: "/createaccount", element: <CreateAccount /> }
 ]);
+
 
 const GlobalStyles = createGlobalStyle`
 ${reset}; 
