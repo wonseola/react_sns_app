@@ -5,6 +5,7 @@ import { FirebaseError } from "firebase/app";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Form, Error, Input, Switcher, Title, Wrapper } from "../components/auth-components";
 import GithubButton from "../components/github-button";
+import PasswordReset from "../components/password-reset";
 
 
 
@@ -15,6 +16,8 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+
+
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {
             target: { name, value },
@@ -41,6 +44,8 @@ export default function Login() {
             setLoading(false);
         }
     };
+
+
     return (
         <Wrapper>
             <Title>Login 𝕏</Title>
@@ -72,6 +77,7 @@ export default function Login() {
                 Don't have an account ? <Link to="/createaccount"> Create one &rarr;</Link>
             </Switcher>
             <GithubButton />
+            <PasswordReset />
         </Wrapper>
     );
 }

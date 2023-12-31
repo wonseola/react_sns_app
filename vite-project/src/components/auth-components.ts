@@ -25,6 +25,7 @@ export const Form = styled.form`
 export const Input = styled.input`
   padding: 10px 20px;
   border-radius: 50px;
+  margin-top:10px;
   border: none;
   width: 100%;
   font-size: 16px;
@@ -46,3 +47,15 @@ a{
     color : #bab7fa;
 }
 `;
+
+
+export const Span = styled.h3`
+  font-weight: 600;
+  color: tan;
+  font-size:20px;
+  text-align:center;
+  display:flex;
+  flex-direction:center;
+  margin:10px;
+ `;
+
