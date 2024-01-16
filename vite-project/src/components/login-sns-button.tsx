@@ -7,10 +7,10 @@ import { useNavigate } from "react-router-dom";
 
 const Button = styled.span`
 background-color:white;
-font-weight:500;
+/* font-weight:500; */
 padding: 10px 20px;
 border-radius:50px;
-width:100%;
+width:20%;
 color:black;
 border : 0;
 margin-top:50px;
@@ -41,6 +41,6 @@ export default function GithubButton() {
     };
     return <Button onClick={onClick}>
         <Logo src="/github-logo.svg" />
-        continue with Github
+
     </Button>
 }
