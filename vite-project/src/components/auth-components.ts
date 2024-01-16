@@ -10,23 +10,24 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content:center;
   margin: 0 auto;
-  background-color:#DBE2EF;
+  background-color:#EEEEEE;
   height:600px;
   margin:auto;
-  border-radius:20px;
-  box-shadow: 5px 5px 0px rgba(63, 114, 175, 0.7);
+  /* border-radius:75% 25% 39% 61% / 47% 43% 57% 53% ; */
+  border-radius:10%;
+  box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.1);
   padding: 0px 40px;
 `;
 
 export const Img = styled.img`
-  width:300px;
+  width:200px;
   justify-content:center;
 `
 
 
 export const Title = styled.h1`
   font-size: 42px;
-  color:black;
+  color:rgb(8,193,134);
 `;
 export const Form = styled.form`
   margin-top: 50px;
@@ -48,7 +49,7 @@ export const Form1 = styled.form`
 
 export const Input = styled.input`
   padding: 5px 10px;
-  /* border-radius: 20px; */
+  /* border-radius: 30%; */
   margin-top:5px;
   border:none;
   border-bottom: 2px solid white;
@@ -58,10 +59,11 @@ export const Input = styled.input`
   background-color: transparent;
   &:focus{
     outline:none;
-    border-color: #769FCD;
+    border-color: rgb(8,193,134);
   }
   &[type="submit"] {
     background-color:white;
+    border-radius:30px;
     cursor: pointer;
     &:hover {
       opacity: 0.8;

@@ -54,10 +54,9 @@ export default function CreateAccount() {
     return (
         <Wrapper>
             <Form1>
-                <Form><Img src="/heart.svg" /></Form>
+                <Form><Img src="/ghost.svg" /></Form>
                 <Form>
-
-                    <Title>ConnectU</Title>
+                    <Title>A Space</Title>
                     <Form onSubmit={onSubmit}>
                         <Input
                             onChange={onChange}
