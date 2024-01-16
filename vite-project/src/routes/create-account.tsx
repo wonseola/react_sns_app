@@ -3,7 +3,7 @@ import { useState } from "react";
 import { auth } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
-import { Form, Error, Input, Switcher, Title, Wrapper, Form1, Img, Form2, MiddleText } from "../components/auth-components";
+import { Form, Error, Input, Switcher, Title, Wrapper, Form1, Img, Form2, MiddleText, Divlayout } from "../components/auth-components";
 import GithubButton from "../components/login-sns-button";
 
 
@@ -58,8 +58,8 @@ export default function CreateAccount() {
             <Form1>
 
                 <Form2><Img src="/1.svg" /></Form2>
-                <Form>
-                    <MiddleText>Join</MiddleText>
+                <Divlayout>
+                    <MiddleText>Join In</MiddleText>
                     <Form onSubmit={onSubmit}>
                         <Input
                             onChange={onChange}
@@ -101,7 +101,7 @@ export default function CreateAccount() {
                         </Link>
 
                     </Switcher>
-                </Form>
+                </Divlayout>
             </Form1>
         </Wrapper >
     );

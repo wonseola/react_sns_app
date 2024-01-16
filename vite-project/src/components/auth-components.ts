@@ -70,14 +70,23 @@ export const Form = styled.form`
   gap: 10px;
   width: 100%;
 `;
+export const Divlayout = styled.div`
+  margin-top: 50px;
+  margin-bottom:10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+`;
 
 
-export const Form2 = styled.form`
+
+export const Form2 = styled.div`
   display: flex;
   width: 100%;
 `;
 
-export const Form1 = styled.form`
+export const Form1 = styled.div`
   margin-bottom:10px;
   display: flex;
   flex-direction:row;
