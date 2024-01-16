@@ -1,5 +1,4 @@
-import { styled } from "styled-components";
-
+import { styled, keyframes } from "styled-components";
 
 
 
@@ -10,31 +9,71 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content:center;
   margin: 0 auto;
-  background-color:#EEEEEE;
+  background-color:white;
   height:600px;
   margin:auto;
   /* border-radius:75% 25% 39% 61% / 47% 43% 57% 53% ; */
-  border-radius:10%;
-  box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.1);
+  border-radius:4%;
+  box-shadow: 10px 10px 10px 1px rgba(0, 0, 0, 0.1);
   padding: 0px 40px;
 `;
 
+const bounce = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+`;
+
 export const Img = styled.img`
-  width:200px;
-  justify-content:center;
+  width: 200px;
+  animation: ${bounce} 0.8s infinite;
+  
+`;
+
+export const MiddleText = styled.h3`
+  color:black;
+  font-size:2vmax;
+  font-weight:800;
+  position:relative;
+  top:30px;
+
 `
 
 
+
 export const Title = styled.h1`
-  font-size: 42px;
+  font-size: 5vmax;
   color:rgb(8,193,134);
+  font-weight:400;
+  font-family:'Black Han Sans',sans-serif;
+  font-style:italic;
+  text-shadow: 5px 5px 2px rgba(0, 0, 0, 0.1);
+  /* text-align:center; */
+  position:relative;
+  top:10px;
+
 `;
+
+
 export const Form = styled.form`
   margin-top: 50px;
   margin-bottom:10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
+`;
+
+
+export const Form2 = styled.form`
+  display: flex;
   width: 100%;
 `;
 
@@ -52,17 +91,21 @@ export const Input = styled.input`
   /* border-radius: 30%; */
   margin-top:5px;
   border:none;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #EEEEEE;
+;
   width: 100%;
   font-size: 16px;
   transition: border-color 0.3s ease;
   background-color: transparent;
   &:focus{
     outline:none;
-    border-color: rgb(8,193,134);
+    border-color:rgb(8,193,134);
+;
   }
   &[type="submit"] {
-    background-color:white;
+    /* background-color:white; */
+    background-color:rgb(8,193,134);
+    color:white;
     border-radius:30px;
     cursor: pointer;
     &:hover {
@@ -84,14 +127,9 @@ a{
 }
 `;
 
+export const SubTitle = styled.text`
+font-size:14px;
+`
 
-export const Span = styled.h3`
-  font-weight: 600;
-  color: white;
-  font-size:20px;
-  text-align:center;
-  display:flex;
-  flex-direction:center;
-  margin:10px;
- `;
+
 

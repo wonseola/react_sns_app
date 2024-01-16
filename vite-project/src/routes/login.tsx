@@ -3,9 +3,9 @@ import { auth } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Form, Error, Input, Switcher, Title, Wrapper } from "../components/auth-components";
+import { Form, Error, Input, Switcher, Title, Wrapper, Form1, Form2, Img, MiddleText } from "../components/auth-components";
 import GithubButton from "../components/login-sns-button";
-
+import PasswordReset from "../components/password-reset";
 
 
 
@@ -47,35 +47,42 @@ export default function Login() {
 
     return (
         <Wrapper>
-            <Title>Login 𝕏</Title>
-            <Form onSubmit={onSubmit}>
+            <Title>Aspace</Title>
+            <Form1>
+                <Form2><Img src="/1.svg" /></Form2>
+                <Form>
+                    <MiddleText>Login</MiddleText>
+                    <Form onSubmit={onSubmit}>
+                        <Input
+                            onChange={onChange}
+                            name="email"
+                            value={email}
+                            placeholder="Email"
+                            type="email"
+                            required
+                        />
+                        <Input
+                            onChange={onChange}
+                            value={password}
+                            name="password"
+                            placeholder="Password"
+                            type="password"
+                            required
+                        />
+                        <Input
+                            type="submit"
+                            value={isLoading ? "Loading..." : "Login"}
+                        />
+                        <GithubButton />
+                    </Form>
+                    {error !== "" ? <Error>{error}</Error> : null}
+                    <Switcher>
+                        Don't have an account ? <Link to="/createaccount" style={{ textDecoration: "none" }}> <br></br>Create one &rarr;</Link>
+                    </Switcher>
+                    <PasswordReset />
 
-                <Input
-                    onChange={onChange}
-                    name="email"
-                    value={email}
-                    placeholder="Email"
-                    type="email"
-                    required
-                />
-                <Input
-                    onChange={onChange}
-                    value={password}
-                    name="password"
-                    placeholder="Password"
-                    type="password"
-                    required
-                />
-                <Input
-                    type="submit"
-                    value={isLoading ? "Loading..." : "Login"}
-                />
-            </Form>
-            {error !== "" ? <Error>{error}</Error> : null}
-            <Switcher>
-                Don't have an account ? <Link to="/createaccount"> Create one &rarr;</Link>
-            </Switcher>
-            <GithubButton />
-        </Wrapper>
+                </Form>
+            </Form1>
+        </Wrapper >
     );
 }
