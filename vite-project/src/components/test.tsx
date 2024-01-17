@@ -1,4 +1,4 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { auth } from "../firebase";
 import Profile from "../routes/profile";
@@ -15,22 +15,20 @@ export const Title = styled.h1`
 `;
 
 const Wrapper = styled.div`
-display:grid;
-grid-template-columns:1fr 4fr;
-height:100%;
-gap:20px;
-padding: 50px 0px;
-width:100%;
-background-color:white;
-
+  gap: 20px;
+  padding: 50px 0px;
+  width: 20%;
+  background-color: #ffffff;
+  margin: 0 auto;
 `;
 
 const Menu = styled.div`
-display: flex;
-flex-direction:column;
-align-items:center;
-gap:20px;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 100%;
+  width: 100%;
 `;
 
 const MenuItem = styled.div`
@@ -55,7 +53,7 @@ svg{
 `;
 
 
-export default function Layout() {
+export default function Test() {
     const navigate = useNavigate();
     const onLogOut = async () => {
         const ok = confirm("Are you sure you want to log out?");
@@ -92,7 +90,6 @@ export default function Layout() {
                     </svg>
                 </MenuItem>
             </Menu>
-            <Outlet />
         </Wrapper>
     );
 }

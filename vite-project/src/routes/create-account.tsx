@@ -53,7 +53,7 @@ export default function CreateAccount() {
     };
     return (
         <Wrapper>
-            <Title>Aspace</Title>
+            <Title>FxStreet</Title>
 
             <Form1>
 

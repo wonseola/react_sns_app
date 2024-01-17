@@ -34,7 +34,6 @@ const bounce = keyframes`
 export const Img = styled.img`
   width: 200px;
   animation: ${bounce} 0.8s infinite;
-  
 `;
 
 export const MiddleText = styled.h3`
@@ -49,7 +48,7 @@ export const MiddleText = styled.h3`
 
 
 export const Title = styled.h1`
-  font-size: 5vmax;
+  font-size: 7vmax;
   color:rgb(8,193,134);
   font-weight:400;
   font-family:'Black Han Sans',sans-serif;

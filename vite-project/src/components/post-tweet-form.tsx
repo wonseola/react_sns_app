@@ -5,42 +5,44 @@ import { auth, db, storage } from "../firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 
+
 const Form = styled.form`
 display:flex;
 flex-direction:column;
 gap :10px;
-
+padding:10px 10px 10px 0;
 `;
 
 const TextArea = styled.textarea`
-border:2px solid white;
+border:2px solid lightgray;
 padding :20px;
 border-radius: 20px;
 font-size: 16px;
-color:white;
+color:black;
 background-color:white;
 width:100%;
 resize:none;
-font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 &::placeholder{
     font-size:16px;
 
 }
 &:focus{
     outline:none;
-    border-color:#FF4000;
+    border-color:#07b07b;
 }
 `;
 
 const AttaxhFileButton = styled.label`
 padding: 10px 0px;
-color: #FF4000;
+color: #07b07b;
 text-align:center;
 border-radius:20px;
-border:1px solid #FF4000;
+border:1px solid #07b07b;
 font-size:14px;
 font-weight:600;
 cursor:pointer;
+width:200px;
+
 `;
 
 const AttachFileInput = styled.input`
@@ -48,12 +50,13 @@ display:none;
 `;
 
 const SubmitBtn = styled.input`
-background-color:#FF4000;
+background-color:#07b07b;
 color:white;
 border:none;
 padding:10px 0px ;
 border-radius:20px;
 font-size:16px;
+width:200px;
 cursor: pointer;
 &:hover,
 &:active{
@@ -61,6 +64,13 @@ cursor: pointer;
 }
 
 `;
+
+const Buttons = styled.div`
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    padding: 0 200px 0 200px;
+`
 
 
 
@@ -106,7 +116,7 @@ export default function PostTweetForm() {
             if (file) {
                 const locationRef = ref(
                     storage,
-                    `posts/${user.uid}-${user.displayName}/${doc.id}`
+                    `posts/${user.uid}/${doc.id}`
                 );
                 const result = await uploadBytes(locationRef, file);
                 const url = await getDownloadURL(result.ref);
@@ -129,8 +139,10 @@ export default function PostTweetForm() {
     return (
         <Form onSubmit={onSubmit}>
             <TextArea required rows={5} maxLength={180} onChange={onChange} value={post} placeholder="What is happening?" />
-            <AttaxhFileButton htmlFor="file" >{file ? "Photo Added" : "Add photo"}</AttaxhFileButton>
-            <AttachFileInput onChange={onFileChange} type="file" id="file" accept="image/*" />
-            <SubmitBtn type="submit" value={isLoading ? "Posting . . ." : "Post"} />
+            <Buttons>
+                <AttaxhFileButton htmlFor="file" >{file ? "Photo Added" : "Add photo"}</AttaxhFileButton>
+                <AttachFileInput onChange={onFileChange} type="file" id="file" accept="image/*" />
+                <SubmitBtn type="submit" value={isLoading ? "Posting . . ." : "Post"} />
+            </Buttons>
         </Form>);
 }
