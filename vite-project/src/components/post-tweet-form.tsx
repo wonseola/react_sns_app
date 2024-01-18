@@ -11,7 +11,9 @@ display:flex;
 flex-direction:column;
 gap :10px;
 padding:10px 10px 10px 0;
+width:100%;
 `;
+
 
 const TextArea = styled.textarea`
 border:2px solid lightgray;

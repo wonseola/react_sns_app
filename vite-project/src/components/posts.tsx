@@ -3,6 +3,7 @@ import { IPost } from "./timeline";
 import { auth, db, storage } from "../firebase";
 import { deleteDoc, doc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
+import { useRef, useState } from "react";
 
 
 const Wrapper = styled.div`
@@ -56,10 +57,21 @@ const Cancel = styled.img`
     width:20px;
     height:20px;
 `
-
+const Morebtn = styled.div`
+    position: relative;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1;
+    cursor: pointer;
+`;
 
 export default function Post({ username, photo, post, userId, id }: IPost) {
     const user = auth.currentUser;
+    const [showDropdown, setShowDropdown] = useState(false);
+    const dropdownRef = useRef(null);
+
     const onDelete = async () => {
         const ok = confirm("Are you sure you want to delete this post?");
 
@@ -75,9 +87,11 @@ export default function Post({ username, photo, post, userId, id }: IPost) {
             console.log(e);
         }
         finally {
-            //
+            setShowDropdown(false);
         }
     }
+
+
     return <Wrapper>
         <Column>
             <Username>{username}</Username>
@@ -87,8 +101,19 @@ export default function Post({ username, photo, post, userId, id }: IPost) {
             {photo ? (<Column>
                 <Photo src={photo} />
             </Column>) : null}
-            {user?.uid === userId ?
-                <DeleteButton onClick={onDelete}><Cancel src="/cancel.svg" /></DeleteButton> : null}
+            {user?.uid === userId ? (
+                <>
+                    <DeleteButton onClick={() => setShowDropdown(!showDropdown)}>
+                        <Cancel src="/more2.svg" />
+                    </DeleteButton>
+                    {showDropdown && (
+                        <Morebtn ref={dropdownRef}>
+                            <button onClick={onDelete}><Cancel src="/cancel.svg" /></button>
+                            <button onClick={() => setShowDropdown(false)}>Cancel</button>
+                        </Morebtn>
+                    )}
+                </>
+            ) : null}
         </Form>
     </Wrapper>
 }

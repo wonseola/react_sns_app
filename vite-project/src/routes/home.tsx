@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import PostTweetForm from "../components/post-tweet-form";
 import Timeline from "../components/timeline";
+import PostTweetForm from "../components/post-tweet-form";
 
 
 const Wrapper = styled.div`
-display: grid;
+/* display: grid; */
 gap:50px;
 overflow-y: scroll;
-grid-template-rows: 1fr 4fr;
+/* grid-template-rows: 1fr 4fr; */
 `;
 
 
