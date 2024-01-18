@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { IPost } from "./timeline";
 import { auth, db, storage } from "../firebase";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
-import { deleteObject, ref } from "firebase/storage";
-import { useRef, useState } from "react";
+import { deleteObject, getDownloadURL, ref } from "firebase/storage";
+import { useEffect, useRef, useState } from "react";
 
 
 const Wrapper = styled.div`
@@ -68,12 +68,37 @@ const Morebtn = styled.div`
     cursor: pointer;
 `;
 
+const Profileimg = styled.img`
+    width: 50px; 
+    height: 50px; 
+    margin-right: 5px;
+`
+
 export default function Post({ username, photo, post, userId, id }: IPost) {
     const user = auth.currentUser;
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = useRef(null);
     const [editedPost, setEditedPost] = useState(post);
     const [showModal, setShowModal] = useState(false);
+
+
+    const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchAvatarUrl = async () => {
+            if (userId) {
+                const storageRef = ref(storage, `avatars/${userId}`);
+                try {
+                    const url = await getDownloadURL(storageRef);
+                    setAvatarUrl(url);
+                } catch (error) {
+                    console.error('Error fetching avatar URL:', error);
+                }
+            }
+        };
+
+        fetchAvatarUrl();
+    }, [userId]);
 
 
     const onDelete = async () => {
@@ -97,11 +122,10 @@ export default function Post({ username, photo, post, userId, id }: IPost) {
 
     const onEdit = async () => {
         try {
-            // 수정된 내용을 데이터베이스에 업데이트
             await updateDoc(doc(db, "posts", id), {
                 post: editedPost,
             });
-            setShowModal(false); // 모달 닫기
+            setShowModal(false);
         } catch (e) {
             console.error("Error editing post:", e);
         }
@@ -109,7 +133,10 @@ export default function Post({ username, photo, post, userId, id }: IPost) {
 
     return <Wrapper>
         <Column>
-            <Username>{username}</Username>
+            <Username>
+                {avatarUrl && <Profileimg src={avatarUrl} />}
+                {username}
+            </Username>
             <Payload>{post}</Payload>
         </Column>
         <Form>
@@ -134,7 +161,7 @@ export default function Post({ username, photo, post, userId, id }: IPost) {
                 </>
             ) : null}
             {showModal && (
-                <div className="edit-modal">
+                <div>
                     <textarea
                         value={editedPost}
                         onChange={(e) => setEditedPost(e.target.value)}
