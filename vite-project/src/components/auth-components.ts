@@ -32,7 +32,7 @@ const bounce = keyframes`
 `;
 
 export const Img = styled.img`
-  width: 200px;
+  width: 400px;
   animation: ${bounce} 0.8s infinite;
 `;
 
@@ -47,18 +47,10 @@ export const MiddleText = styled.h3`
 
 
 
-export const Title = styled.h1`
-  font-size: 7vmax;
-  color:rgb(8,193,134);
-  font-weight:400;
-  font-family:'Black Han Sans',sans-serif;
-  font-style:italic;
-  text-shadow: 5px 5px 2px rgba(0, 0, 0, 0.1);
-  /* text-align:center; */
-  position:relative;
-  top:10px;
-
-`;
+export const Logo = styled.img`
+width : 100%;
+height:100px;
+`
 
 
 export const Form = styled.form`
@@ -83,6 +75,7 @@ export const Divlayout = styled.div`
 export const Form2 = styled.div`
   display: flex;
   width: 100%;
+  flex-direction:column;
 `;
 
 export const Form1 = styled.div`
@@ -107,12 +100,12 @@ export const Input = styled.input`
   background-color: transparent;
   &:focus{
     outline:none;
-    border-color:rgb(8,193,134);
+    border-color:#2667C6;
 ;
   }
   &[type="submit"] {
     /* background-color:white; */
-    background-color:rgb(8,193,134);
+    background-color:#2667C6;
     color:white;
     border-radius:30px;
     cursor: pointer;

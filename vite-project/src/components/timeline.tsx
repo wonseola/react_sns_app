@@ -19,11 +19,9 @@ const Wrapper = styled.div`
 display:flex;
 gap:10px;
 flex-direction:column;
-overflow-y:scroll;
-&::-webkit-scrollbar{
-    display:none;
-}
+overflow-y: scroll;
 `;
+
 
 export default function Timeline() {
     const [posts, setPosts] = useState<IPost[]>([]);
@@ -62,6 +60,10 @@ export default function Timeline() {
     }, [])
     return (
         <Wrapper>
-            {posts.map(post => <Post key={post.id} {...post} />)}
-        </Wrapper >);
+            {posts.map((post) => (
+                <Post key={post.id} {...post} />
+            ))}
+        </Wrapper>
+
+    );
 }

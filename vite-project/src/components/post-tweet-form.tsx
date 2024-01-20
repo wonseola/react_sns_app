@@ -5,12 +5,15 @@ import { auth, db, storage } from "../firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 
+const Wrapper = styled.form`
+    
+`
 
 const Form = styled.form`
 display:flex;
 flex-direction:column;
 gap :10px;
-padding:10px 10px 10px 0;
+padding-top:40px;
 width:100%;
 `;
 
@@ -30,20 +33,20 @@ resize:none;
 }
 &:focus{
     outline:none;
-    border-color:#07b07b;
+    border-color:#2667C6;
 }
 `;
 
 const AttaxhFileButton = styled.label`
 padding: 10px 0px;
-color: #07b07b;
+color: #2667C6;
 text-align:center;
 border-radius:20px;
-border:1px solid #07b07b;
+border:1px solid #2667C6;
 font-size:14px;
 font-weight:600;
 cursor:pointer;
-width:200px;
+/* width:200px; */
 
 `;
 
@@ -52,13 +55,13 @@ display:none;
 `;
 
 const SubmitBtn = styled.input`
-background-color:#07b07b;
+background-color:#2667C6;
 color:white;
 border:none;
 padding:10px 0px ;
 border-radius:20px;
 font-size:16px;
-width:200px;
+/* width:200px; */
 cursor: pointer;
 &:hover,
 &:active{
@@ -74,6 +77,11 @@ const Buttons = styled.div`
     padding: 0 200px 0 200px;
 `
 
+const Imageview = styled.img`
+    width:400px;
+    height:400px;
+    margin:20px;
+`
 
 
 
@@ -82,7 +90,7 @@ export default function PostTweetForm() {
     const [isLoading, setLoading] = useState(false);
     const [post, setPost] = useState("");
     const [file, setFile] = useState<File | null>(null);
-
+    const [imagePreview, setImagePreview] = useState<string | null>(null);
 
 
     const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -95,6 +103,7 @@ export default function PostTweetForm() {
             const file = (files[0]);
             if (file.size <= 1024 * 1024) {
                 setFile(file);
+                setImagePreview(URL.createObjectURL(file));
             }
             else {
                 alert("파일 넘 큼 ");
@@ -127,6 +136,7 @@ export default function PostTweetForm() {
                 });
             }
             setPost("");
+            setImagePreview(null);
             setFile(null);
         }
         catch (e) {
@@ -139,12 +149,19 @@ export default function PostTweetForm() {
     }
 
     return (
-        <Form onSubmit={onSubmit}>
-            <TextArea required rows={5} maxLength={180} onChange={onChange} value={post} placeholder="What is happening?" />
-            <Buttons>
-                <AttaxhFileButton htmlFor="file" >{file ? "Photo Added" : "Add photo"}</AttaxhFileButton>
-                <AttachFileInput onChange={onFileChange} type="file" id="file" accept="image/*" />
-                <SubmitBtn type="submit" value={isLoading ? "Posting . . ." : "Post"} />
-            </Buttons>
-        </Form>);
+
+        <Wrapper>
+
+            <Form onSubmit={onSubmit}>
+                <TextArea required rows={5} maxLength={180} onChange={onChange} value={post} placeholder="What is happening?" />
+                <Buttons>
+                    <AttaxhFileButton htmlFor="file" >{file ? "Photo Added" : "Add photo"}</AttaxhFileButton>
+                    <AttachFileInput onChange={onFileChange} type="file" id="file" accept="image/*" />
+                    <SubmitBtn type="submit" value={isLoading ? "Posting . . ." : "Post"} />
+                </Buttons>
+                {imagePreview && <Imageview src={imagePreview} />}
+            </Form>
+        </Wrapper>
+
+    );
 }

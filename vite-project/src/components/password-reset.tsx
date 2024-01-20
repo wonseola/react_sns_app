@@ -25,12 +25,12 @@ export const Input = styled.input`
   background-color: transparent;
   &:focus{
     outline:none;
-    border-color:rgb(8,193,134);
+    border-color:#2667C6;
 ;
   }
   &[type="submit"] {
     /* background-color:white; */
-    background-color:rgb(8,193,134);
+    background-color:#2667C6;
     color:white;
     border-radius:30px;
     cursor: pointer;
@@ -139,7 +139,9 @@ export default function PasswordReset() {
         }
     };
 
-
+    const onClickModal = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
+    };
     return (
 
         <Switcher>
@@ -151,7 +153,8 @@ export default function PasswordReset() {
             </Switcher>
 
 
-            <ModalContainer>
+            <ModalContainer onClick={onClickModal}>
+
                 <Modal isOpen={modalIsOpen} style={{
                     content: {
                         position: 'absolute',
@@ -163,10 +166,9 @@ export default function PasswordReset() {
                         padding: 0,
                         overflow: 'visible',
                     },
-                    overlay: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                    },
+
                 }}>
+
                     <Wrapper>
                         <Span2>🧸 비밀번호 찾기</Span2>
                         <Cancel onClick={() => { setModalIsOpen(false) }} src="/cancel.svg" />

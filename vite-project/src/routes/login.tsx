@@ -3,7 +3,7 @@ import { auth } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Form, Error, Input, Switcher, Title, Wrapper, Form1, Form2, Img, MiddleText, Divlayout } from "../components/auth-components";
+import { Form, Error, Input, Switcher, Wrapper, Form1, Form2, Img, MiddleText, Divlayout } from "../components/auth-components";
 import GithubButton from "../components/login-sns-button";
 import PasswordReset from "../components/password-reset";
 
@@ -47,9 +47,8 @@ export default function Login() {
 
     return (
         <Wrapper>
-            <Title>Aspace</Title>
             <Form1>
-                <Form2><Img src="/1.svg" /></Form2>
+                <Form2><Img src="/bint2.svg" /></Form2>
                 <Divlayout>
                     <MiddleText>Login</MiddleText>
                     <Form onSubmit={onSubmit}>

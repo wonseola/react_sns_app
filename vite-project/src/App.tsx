@@ -10,6 +10,8 @@ import CreateAccount from "./routes/create-account";
 import reset from "styled-reset";
 import LoadingScreen from "./components/loading-screen";
 import ProtectedRoute from "./components/protected-route";
+import Favorite from "./routes/favorite";
+import Search from "./routes/search";
 
 const router = createBrowserRouter([
   {
@@ -17,12 +19,16 @@ const router = createBrowserRouter([
     element: <ProtectedRoute><Layout /></ProtectedRoute>,
     children: [
       { path: "", element: <Home /> },
-      { path: "profile", element: <Profile /> }
+      { path: "profile", element: <Profile /> },
+      { path: "/search", element: <Search /> },
+      { path: "/favorite", element: <Favorite /> },
     ]
   },
 
   { path: "/login", element: <Login /> },
-  { path: "/createaccount", element: <CreateAccount /> }
+  { path: "/createaccount", element: <CreateAccount /> },
+
+
 ]);
 
 
@@ -34,7 +40,7 @@ ${reset};
 body{
 background-color:#EEEEEE;
 color:black;
-font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 `;
 
@@ -42,6 +48,7 @@ const Wrapper = styled.div`
 height:100vh;
 display:flex;
 justify-content:center;
+padding: 0px 300px 0px 300px;
 `;
 
 
