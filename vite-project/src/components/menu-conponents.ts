@@ -1,17 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Title = styled.h1`
-  font-size: 3vmax;
-  color:rgb(63, 66, 218);
-  font-weight:400;
-  font-family:'Black Han Sans',sans-serif;
-  font-style:italic;
-  text-shadow: 5px 5px 2px rgba(0, 0, 0, 0.1);
-  text-align:center;
-    margin:30px;
-`;
-
 export const Wrapper = styled.div`
 display:grid;
 grid-template-columns:20% auto;
@@ -38,6 +27,7 @@ justify-content:flex-start;
 align-items:center;
 height:50px;
 width:200px;
+max-width:100%;
 padding-left: 20px; 
 border-radius:20px;
 position: relative;
@@ -45,32 +35,28 @@ transition: background-color 0.3s ;
   &:hover {
     background-color: #b3d2ff; 
 }
-svg{
-    width:30px;
-    fill:black;
-}
 
-&.logout{
-    border-color:#2667C6;
-    svg{
-        fill:#2667C6;
-    }
-}
 `;
 
 
 export const Menutext = styled.h2`
-    font-size:18px;
+    font-size:12px;
     margin-left:20px;
     color:black;
-`
+    @media (max-width: 1200px) {
+    display: none;
+  }
+`;
+
 
 export const Icons = styled.img`
     width:25px;
     height:25px;
-
+    max-width:100%;
+    max-height:100%;
 `
 
 export const Linkto = styled(Link)`
   text-decoration: none;
+  max-width:100%;
 `;

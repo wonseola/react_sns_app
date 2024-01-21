@@ -7,12 +7,21 @@ const Wrapper = styled.div`
   gap: 50px;
   overflow-y: scroll;
   grid-template-rows: 1fr 5fr;
+  max-width:100%
 `;
+
+const Input = styled.div`
+    display:flex;
+    flex-direction:row;
+`
+
 
 export default function Home() {
     return (
         <Wrapper>
-            <PostTweetForm />
+            <Input>
+                <PostTweetForm />
+            </Input>
             <Timeline />
         </Wrapper>
     );

@@ -34,6 +34,7 @@ const bounce = keyframes`
 export const Img = styled.img`
   width: 400px;
   animation: ${bounce} 0.8s infinite;
+  margin : 0 50px 0 50px;
 `;
 
 export const MiddleText = styled.h3`

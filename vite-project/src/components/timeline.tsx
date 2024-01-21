@@ -12,7 +12,7 @@ export interface IPost {
     post: string;
     userId: string;
     username: string;
-    createAt: number;
+    createdAt: number;
 }
 
 const Wrapper = styled.div`
@@ -41,23 +41,24 @@ export default function Timeline() {
             //         post, createAt, userId, username, photo, id: doc.id
             //     };
             // });
-            unsubscribe = await onSnapshot(postQuery, (snapshot) => {
+            unsubscribe = onSnapshot(postQuery, (snapshot) => {
                 const posts = snapshot.docs.map((doc) => {
-                    const { post, createAt, userId, username, photo } = doc.data();
+                    const { post, createdAt, userId, username, photo } = doc.data();
                     return {
-                        post, createAt, userId, username, photo, id: doc.id
+                        post, createdAt, userId, username, photo, id: doc.id,
                     };
                 });
                 setPosts(posts);
-
-            })
+            });
         };
+
         fetchPosts();
+
         return () => {
             unsubscribe && unsubscribe();
-        }
+        };
+    }, []);
 
-    }, [])
     return (
         <Wrapper>
             {posts.map((post) => (
