@@ -7,7 +7,9 @@ const Wrapper = styled.div`
   gap: 50px;
   overflow-y: scroll;
   grid-template-rows: 1fr 5fr;
-  max-width:100%
+  max-width:100%;
+  padding: 0 100px 0px 0;
+
 `;
 
 const Input = styled.div`

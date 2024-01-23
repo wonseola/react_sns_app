@@ -7,16 +7,18 @@ grid-template-columns:20% auto;
 height:100%;
 width:100%;
 gap:20px;
-padding: 20px 0px;
-width:100%;
+padding-top:5%;
+padding-left:5%;
+padding-right:50px;
 background-color:white;
+
 `;
 
 export const Menu = styled.div`
 display: flex;
 flex-direction:column;
 align-items:center;
-gap:20px;
+gap:10px;
 
 `;
 
@@ -40,18 +42,18 @@ transition: background-color 0.3s ;
 
 
 export const Menutext = styled.h2`
-    font-size:12px;
+    font-size:10px;
     margin-left:20px;
     color:black;
-    @media (max-width: 1200px) {
+    @media (max-width: 800px) {
     display: none;
   }
 `;
 
 
 export const Icons = styled.img`
-    width:25px;
-    height:25px;
+    width:20px;
+    height:20px;
     max-width:100%;
     max-height:100%;
 `

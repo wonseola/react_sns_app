@@ -43,9 +43,9 @@ export default function Timeline() {
             // });
             unsubscribe = onSnapshot(postQuery, (snapshot) => {
                 const posts = snapshot.docs.map((doc) => {
-                    const { post, createdAt, userId, username, photo } = doc.data();
+                    const { post, createdAt, userId, username, photo, like } = doc.data();
                     return {
-                        post, createdAt, userId, username, photo, id: doc.id,
+                        post, createdAt, userId, username, photo, id: doc.id, like
                     };
                 });
                 setPosts(posts);

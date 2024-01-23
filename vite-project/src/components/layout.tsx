@@ -39,7 +39,7 @@ export default function Layout() {
                     </MenuItem>
                 </Linkto>
 
-                <Linkto to="/profile">
+                <Linkto to="/bookmark">
                     <MenuItem>
                         <Icons src="/bookmart.svg" />
                         <Menutext>BOOKMARK</Menutext>

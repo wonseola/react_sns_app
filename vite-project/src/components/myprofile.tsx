@@ -6,6 +6,9 @@ import { updateProfile } from "firebase/auth";
 
 const Name = styled.span`
   font-size: 22px;
+  display: block;
+  text-align: center;
+  padding-top:10px;
 `;
 
 const AvatarUpload = styled.label`
@@ -34,7 +37,10 @@ const AvatarUpload = styled.label`
 `;
 
 const Div = styled.div`
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
 `
 
 const AvatarImg = styled.img`
@@ -46,40 +52,45 @@ const AvatarImg = styled.img`
 const AvatarInput = styled.input`
   display: none;
 `;
-export default function Myprofile() {
-    const user = auth.currentUser;
-    const [avatar, setAvatar] = useState(user?.photoURL);
 
-    const onAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { files } = e.target;
-        if (!user) return;
-        if (files && files.length === 1) {
-            const file = files[0];
-            const locationRef = ref(storage, `avatars/${user?.uid}`);
-            const result = await uploadBytes(locationRef, file);
-            const avatarUrl = await getDownloadURL(result.ref);
-            setAvatar(avatarUrl);
-            await updateProfile(user, {
-                photoURL: avatarUrl,
-            });
-        }
-    };
-    return (
-        <Div>
-            <AvatarUpload htmlFor="avatar">
-                {avatar ? (
-                    <>
-                        <AvatarImg src={avatar} />
-                    </>
-                ) : <AvatarImg src="bint2.svg" />}
-            </AvatarUpload>
-            <AvatarInput
-                onChange={onAvatarChange}
-                id="avatar"
-                type="file"
-                accept="image/*"
-            />
-            <Name>{user?.displayName ?? "Anonymous"}</Name>
-        </Div>
-    )
+
+export default function Myprofile() {
+  const user = auth.currentUser;
+  const [avatar, setAvatar] = useState(user?.photoURL);
+
+  const onAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { files } = e.target;
+    if (!user) return;
+    if (files && files.length === 1) {
+      const file = files[0];
+      const locationRef = ref(storage, `avatars/${user?.uid}`);
+      const result = await uploadBytes(locationRef, file);
+      const avatarUrl = await getDownloadURL(result.ref);
+      setAvatar(avatarUrl);
+      await updateProfile(user, {
+        photoURL: avatarUrl,
+      });
+    }
+  };
+
+
+  return (
+    <Div>
+      <AvatarUpload htmlFor="avatar">
+        {avatar ? (
+          <>
+            <AvatarImg src={avatar} />
+          </>
+        ) : <AvatarImg src="bint2.svg" />}
+      </AvatarUpload>
+      <AvatarInput
+        onChange={onAvatarChange}
+        id="avatar"
+        type="file"
+        accept="image/*"
+      />
+      <Name>{user?.displayName ?? "Anonymous"}</Name>
+
+    </Div>
+  )
 }

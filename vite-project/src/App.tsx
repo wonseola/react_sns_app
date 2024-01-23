@@ -12,6 +12,7 @@ import LoadingScreen from "./components/loading-screen";
 import ProtectedRoute from "./components/protected-route";
 import Favorite from "./routes/favorite";
 import Search from "./routes/search";
+import Bookmark from "./routes/bookmark";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
       { path: "profile", element: <Profile /> },
       { path: "/search", element: <Search /> },
       { path: "/favorite", element: <Favorite /> },
+      { path: "/bookmark", element: <Bookmark /> },
     ]
   },
 
@@ -48,7 +50,8 @@ const Wrapper = styled.div`
 height:100vh;
 display:flex;
 justify-content:center;
-padding: 0px 300px 0px 300px;
+/* padding: 0px 50px 0px 50px; */
+
 `;
 
 

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getDownloadURL, ref } from "firebase/storage";
 import { storage } from "../firebase";
 import Editpost from "./editpost";
+import LikePost from "./likepost";
 
 
 const Wrapper = styled.div`
@@ -14,11 +15,6 @@ const Wrapper = styled.div`
     
 `;
 
-const Postbottom = styled.div`
-    display:flex;
-    display:row;
-    padding:4px;
-`
 
 const Time = styled.h2`
     font-size:10px;
@@ -42,35 +38,24 @@ const Photo = styled.img`
 
 const Username = styled.span`
     font-weight:600;
-    font-size:15px;
+    font-size:13px;
 `;
 
 const Payload = styled.p`
     margin:10px 0px;
-    font-size: 20px;
+    font-size: 15px;
 `;
+
 
 const Avatar = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 5px;
   margin-right: 10px;
+  border:1px solid gray;
+
 `;
 
-const Heart = styled.div`
-    width:20px;
-    height:20px;
-
-`
-
-
-const Heartimg = styled.img`
-    /* transition: filter 0.3s ease; */
-    &:hover{
-        filter: invert(27%) sepia(88%) saturate(5417%) hue-rotate(2deg) brightness(98%) contrast(102%);
-    }
-
-`
 
 
 const formatTimeDifference = (createdAt: string | number | Date) => {
@@ -139,11 +124,6 @@ export default function Post({ username, photo, post, userId, id, createdAt }: I
             </Column>) : null}
             <Editpost photo={photo} post={post} userId={userId} id={id} username={username} createdAt={createdAt} />
         </Form>
-        <Postbottom>
-            <Heart  >
-                <Heartimg src="/heart.svg" />
-            </Heart>
-            <span>likes</span>
-        </Postbottom>
+        <LikePost />
     </Wrapper>
 }

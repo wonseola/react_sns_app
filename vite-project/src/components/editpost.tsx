@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { IPost } from "./timeline";
 
 const Editbtn = styled.div`
-    color: black;
+    color: #000000;
     font-weight: 600;
     border: 0;
     font-size: 12px;
@@ -16,7 +16,14 @@ const Editbtn = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
 `;
+
+const Div = styled.div`
+    width:20px;
+    height:20px;
+    border:none;
+`
 
 const Buttonimg = styled.img`
     width: 20px;
@@ -27,16 +34,28 @@ const Buttonimg = styled.img`
 
 const Morebtn = styled.div`
     position: relative;
+    right:100px;
+    
     display:flex;
     flex-direction:row;
     background-color: white;
     border: 1px solid gray;
+    width:140px;
     border-radius: 5px;
-    align-items:center;
+    align-items:end;
     padding: 10px;
     cursor: pointer;
-    z-index:1;
+
 `;
+
+const Edittextarea = styled.textarea`
+    border:none;
+    resize:none;
+    border: 1px solid gray;
+    padding:10px;
+    &:focus{
+    }
+`
 
 
 
@@ -81,13 +100,13 @@ export default function Editpost({ photo, post, userId, id }: IPost) {
 
 
     return (
-        <>
+        <Div>
             {user?.uid === userId && (
                 <>
-
                     <Editbtn onClick={() => setShowDropdown(!showDropdown)}>
                         <Buttonimg src="/more2.svg" />
                     </Editbtn>
+
                     {showDropdown && (
 
                         <Morebtn ref={dropdownRef} onClick={() => setShowDropdown(false)}>
@@ -99,7 +118,7 @@ export default function Editpost({ photo, post, userId, id }: IPost) {
                             }}>
                                 <Buttonimg src="/write.svg" /></Editbtn>
                             <Editbtn onClick={() => setShowDropdown(false)}>
-                                <Buttonimg src="/cancel.svg" /></Editbtn>
+                                X</Editbtn>
                         </Morebtn>
                     )}
                 </>
@@ -107,7 +126,7 @@ export default function Editpost({ photo, post, userId, id }: IPost) {
             {showModal && (
 
                 <div>
-                    <textarea
+                    <Edittextarea
                         value={editedPost}
                         onChange={(e) => setEditedPost(e.target.value)}
                         rows={4}
@@ -117,7 +136,7 @@ export default function Editpost({ photo, post, userId, id }: IPost) {
                     <button onClick={() => setShowModal(false)}>Cancel</button>
                 </div>
             )}
-        </>
+        </Div>
     );
 }
 
