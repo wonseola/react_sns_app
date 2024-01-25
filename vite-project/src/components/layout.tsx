@@ -3,6 +3,7 @@ import { auth } from "../firebase";
 import { Icons, Linkto, Menu, MenuItem, Menutext, Wrapper } from "./menu-conponents";
 import styled from "styled-components";
 import Myprofile from "./myprofile";
+import Rightview from "./rightview";
 
 
 const Img = styled.img`
@@ -66,6 +67,7 @@ export default function Layout() {
 
             </Menu>
             <Outlet />
+            <Rightview />
         </Wrapper>
     );
 }

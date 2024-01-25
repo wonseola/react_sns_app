@@ -13,6 +13,7 @@ export interface IPost {
     userId: string;
     username: string;
     createdAt: number;
+    like: number;
 }
 
 const Wrapper = styled.div`

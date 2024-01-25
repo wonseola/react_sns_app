@@ -29,9 +29,9 @@ export default function Myposts() {
         console.log("Snapshot:", snapshot.docs.map(doc => doc.data()));
         console.log("Snapshot:", snapshot.docs.map(doc => doc.data()));
         const posts = snapshot.docs.map(doc => {
-            const { post, createdAt, userId, username, photo } = doc.data();
+            const { post, createdAt, userId, username, photo, like } = doc.data();
             return {
-                post, createdAt, userId, username, photo, id: doc.id,
+                post, createdAt, userId, username, photo, id: doc.id, like
             };
         });
         setposts(posts);

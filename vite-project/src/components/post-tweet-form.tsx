@@ -129,6 +129,7 @@ export default function PostTweetForm() {
                 createdAt: Date.now(),
                 username: user.displayName || "Annoymous",
                 userId: user.uid,
+                like: 0,
             });
             if (file) {
                 const locationRef = ref(
@@ -159,7 +160,7 @@ export default function PostTweetForm() {
 
 
         <Form onSubmit={onSubmit}>
-            <TextArea required rows={1} maxLength={300} onChange={onChange} value={post} placeholder="What is happening?" />
+            <TextArea required rows={1} maxLength={300} onChange={onChange} value={post} placeholder="Let's talk !" />
             <Buttons>
                 <AttaxhFileButton htmlFor="file" >{file ? "Photo Added" : <Btn><img src="/addimg.svg" /></Btn>}</AttaxhFileButton>
                 <AttachFileInput onChange={onFileChange} type="file" id="file" accept="image/*" />

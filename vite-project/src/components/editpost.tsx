@@ -57,6 +57,11 @@ const Edittextarea = styled.textarea`
     }
 `
 
+const Textarea = styled.div`
+    position:relative;
+    right:500px;
+`
+
 
 
 export default function Editpost({ photo, post, userId, id }: IPost) {
@@ -125,7 +130,7 @@ export default function Editpost({ photo, post, userId, id }: IPost) {
             )}
             {showModal && (
 
-                <div>
+                <Textarea>
                     <Edittextarea
                         value={editedPost}
                         onChange={(e) => setEditedPost(e.target.value)}
@@ -134,7 +139,7 @@ export default function Editpost({ photo, post, userId, id }: IPost) {
                     />
                     <button onClick={onEdit}>Save</button>
                     <button onClick={() => setShowModal(false)}>Cancel</button>
-                </div>
+                </Textarea>
             )}
         </Div>
     );
