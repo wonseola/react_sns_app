@@ -1,39 +1,28 @@
 
+
+
 export default function Rightview() {
-}
+    // const [result, setResult] = useState<string | null>(null);
+
+    // const guessNumber = () => {
+    //     const randomNumber = Math.floor(Math.random() * 10);
+    //     const userGuess = prompt('0부터 9까지의 숫자를 입력하세요:');
+
+    //     if (userGuess !== null && !isNaN(Number(userGuess))) {
+    //         if (parseInt(userGuess) === randomNumber) {
+    //             setResult('정답입니다! 🎉');
+    //         } else {
+    //             setResult(`틀렸습니다. 정답은 ${randomNumber}입니다.`);
+    //         }
+    //     } else {
+    //         alert('올바른 숫자를 입력하세요.');
+    //     }
+    // };
 
 
-import React, { useState, useEffect } from 'react';
-
-const Game = () => {
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-
-    useEffect(() => {
-        const handleMouseMove = (e) => {
-            setPosition({ x: e.clientX, y: e.clientY });
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, []);
 
     return (
-        <div>
-            <div
-                style={{
-                    position: 'absolute',
-                    left: position.x,
-                    top: position.y,
-                    width: '20px',
-                    height: '20px',
-                    backgroundColor: 'red',
-                }}
-            ></div>
-        </div>
+        // 
+        <h1></h1>
     );
-};
-
-export default Game;
+}
