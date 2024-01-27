@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { styled } from "styled-components"
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
@@ -27,18 +27,18 @@ height: 25px;
 
 export default function GithubButton() {
     const navigate = useNavigate();
-    // const onClickGit = async () => {
-    //     try {
-    //         const provider = new GithubAuthProvider();
-    //         await signInWithPopup(auth, provider);
-    //         navigate("/");
+    const onClickGit = async () => {
+        try {
+            const provider = new GithubAuthProvider();
+            await signInWithPopup(auth, provider);
+            navigate("/");
 
-    //     }
-    //     catch (error) {
-    //         console.error(error);
-    //     }
+        }
+        catch (error) {
+            console.error(error);
+        }
 
-    // };
+    };
 
     const onClickGoogle = async () => {
         try {
@@ -56,9 +56,9 @@ export default function GithubButton() {
 
     return (
         <ButtonWrapper>
-            {/* <Button onClick={onClickGit}>
+            <Button onClick={onClickGit}>
                 <Logo src="/github-logo.svg" />
-            </Button> */}
+            </Button>
             <Button onClick={onClickGoogle}>
                 <Logo src="/google.svg" />
             </Button>
